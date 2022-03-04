@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.1" class="java.beans.XMLDecoder">
+ <int>6</int>
+ <object class="java.util.HashMap">
+  <void method="put">
+   <int>1</int>
+   <object class="model.Order" id="Order0">
+    <void property="foodItems">
+     <void method="add">
+      <object class="model.SideFoodItem">
+       <void property="cookTime">
+        <int>10</int>
+       </void>
+       <void property="name">
+        <string>Pizza Log</string>
+       </void>
+       <void property="ovenSpaceUnits">
+        <int>1</int>
+       </void>
+       <void property="price">
+        <double>6.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="model.SideFoodItem">
+       <void property="name">
+        <string>Tossed Salad</string>
+       </void>
+       <void property="prepTime">
+        <int>5</int>
+       </void>
+       <void property="price">
+        <double>5.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="model.PizzaFoodItem">
+       <void property="cookTime">
+        <int>15</int>
+       </void>
+       <void property="name">
+        <string>Medium Pizza</string>
+       </void>
+       <void property="ovenSpaceUnits">
+        <int>2</int>
+       </void>
+       <void property="prepTime">
+        <int>10</int>
+       </void>
+       <void property="price">
+        <double>11.0</double>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="orderId">
+     <int>1</int>
+    </void>
+    <void property="status">
+     <object class="java.lang.Enum" id="Order$OrderStatus0" method="valueOf">
+      <class>model.Order$OrderStatus</class>
+      <string>Delivered</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>3</int>
+   <object class="model.Order" id="Order1">
+    <void property="foodItems">
+     <void method="add">
+      <object class="model.PizzaFoodItem">
+       <void property="cookTime">
+        <int>20</int>
+       </void>
+       <void property="name">
+        <string>Large Pizza</string>
+       </void>
+       <void property="ovenSpaceUnits">
+        <int>4</int>
+       </void>
+       <void property="prepTime">
+        <int>15</int>
+       </void>
+       <void property="price">
+        <double>16.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="model.PizzaFoodItem">
+       <void property="cookTime">
+        <int>13</int>
+       </void>
+       <void property="name">
+        <string>Small Pizza</string>
+       </void>
+       <void property="ovenSpaceUnits">
+        <int>1</int>
+       </void>
+       <void property="prepTime">
+        <int>8</int>
+       </void>
+       <void property="price">
+        <double>8.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="model.SideFoodItem">
+       <void property="name">
+        <string>Tossed Salad</string>
+       </void>
+       <void property="prepTime">
+        <int>5</int>
+       </void>
+       <void property="price">
+        <double>5.0</double>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="orderId">
+     <int>3</int>
+    </void>
+    <void property="status">
+     <object idref="Order$OrderStatus0"/>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>6</int>
+   <object class="model.Order" id="Order2">
+    <void property="foodItems">
+     <void method="add">
+      <object class="model.SideFoodItem">
+       <void property="cookTime">
+        <int>10</int>
+       </void>
+       <void property="name">
+        <string>Pizza Log</string>
+       </void>
+       <void property="ovenSpaceUnits">
+        <int>1</int>
+       </void>
+       <void property="price">
+        <double>6.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="model.SideFoodItem">
+       <void property="name">
+        <string>Tossed Salad</string>
+       </void>
+       <void property="prepTime">
+        <int>5</int>
+       </void>
+       <void property="price">
+        <double>5.0</double>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="orderId">
+     <int>6</int>
+    </void>
+    <void property="status">
+     <object idref="Order$OrderStatus0"/>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

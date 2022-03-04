@@ -1,0 +1,588 @@
+ArgSample
+set [ -x, --extend 'help description for x' | -y, --yield | -z, --sleep ]
+[-e] [[upper | lower | any] <pattern>] <other>
+ArgSample
+((match [upper | lower | any] <other>) |
+ (ending <file>) |
+ (<other> match <pattern>))
+[set | clear]
+ArgSample
+[-a, --after  <lines>] 'number of lines after a match'
+[-b, --before <lines>] 'number of lines before a match'
+[-cde]
+match|starting|ending|<other> <pattern> <file>...
+Options:
+-c confirm actions
+-d delete matching line and by the way, if this runs too long, and continues for a long time, where will all this text go ?
+-e, --exit exit on error
+-y, --yield yeild to substitutions
+-z, --sleep dormant state when completed
+
+Token: set
+Token: [
+token: -
+Token: -
+single dash: x
+second option name: extend
+Token: <sQuote>
+Token: |
+Token: -
+single dash: y
+second option name: yield
+Token: |
+Token: -
+single dash: z
+second option name: sleep
+Token: ]
+Token: [
+token: -
+Token: -
+single dash: e
+Token: ]
+Token: [
+token: [
+Token: [
+Token: upper
+Token: |
+Token: lower
+Token: |
+Token: any
+Token: ]
+Token: <
+var operand: pattern
+Token: ]
+Token: <
+var operand: other
+Token: ArgSample
+Token: (
+Token: (
+Token: match
+Token: [
+token: upper
+Token: upper
+Token: |
+Token: lower
+Token: |
+Token: any
+Token: ]
+Token: <
+var operand: other
+Token: )
+Token: |
+Token: (
+Token: ending
+Token: <
+var operand: file
+Token: )
+Token: |
+Token: (
+Token: <
+var operand: other
+Token: match
+Token: <
+var operand: pattern
+Token: )
+Token: )
+Token: [
+token: set
+Token: set
+Token: |
+Token: clear
+Token: ]
+Token: ArgSample
+Token: [
+token: -
+Token: -
+single dash: a
+second option name: after
+Token: ]
+Token: <sQuote>
+Token: [
+token: -
+Token: -
+single dash: b
+second option name: before
+Token: ]
+Token: <sQuote>
+Token: [
+token: -
+Token: -
+single dash: cde
+Token: ]
+Token: match
+Token: |
+Token: starting
+Token: |
+Token: ending
+Token: |
+Token: <
+var operand: other
+Token: <
+var operand: pattern
+Token: <
+var operand: file
+Token: ...
+Token: Options
+parse Options section...
+Token: -
+parse option: c
+Help text: confirm actions
+Token: -
+parse option: d
+Help text: delete matching line and by the way, if this runs too long, and continues for a long time, where will all this text go ?
+Token: -
+parse option: e
+second option name: exit
+Help text: exit on error
+Token: -
+parse option: y
+second option name: yield
+Help text: yeild to substitutions
+Token: -
+parse option: z
+second option name: sleep
+Help text: dormant state when completed
+np var operand:      pattern     VAR               
+np var operand:        other     VAR               
+np var operand:         file   R VAR               
+np lit operand:          set     LIT               
+np lit operand:        upper     LIT               
+np lit operand:        lower     LIT               
+np lit operand:          any     LIT               
+np lit operand:        match     LIT               
+np lit operand:       ending     LIT               
+np lit operand:        clear     LIT               
+np lit operand:     starting     LIT               
+np     option:         x   extend                                   H
+np     option:         y    yield                                   H
+np     option:         z    sleep                                   H
+np     option:         e     exit                                   H
+np     option:         a    after                       lines       H
+np     option:         b   before                       lines       H
+np     option:         c                                            H
+np     option:         d                                            H
+ArgList
+S E Operand:        ArgSample     LIT               
+  S E Operand:        ArgSample     LIT               
+      E Operand:        ArgSample     LIT               
+  E Option:  O          a    after                       lines       H
+  E Option:  O          b   before                       lines       H
+  E Option:  O          c                                            H
+  E Option:  O          d                                            H
+  E Option:  O          e     exit                                   H
+S E Operand:            match     LIT               
+      S   Operand:         starting     LIT               
+        S   Operand:           ending     LIT               
+              Operand:            other     VAR               
+  E Operand:          pattern     VAR               
+    Operand:   R         file   R VAR               
+S E Group:       ArgList
+  E Operand:            match     LIT               
+S E Operand: O          upper     LIT               
+  S   Operand: O          lower     LIT               
+        Operand: O            any     LIT               
+    Operand:            other     VAR               
+
+    S   Group:       ArgList
+  E Operand:           ending     LIT               
+    Operand:             file   R VAR               
+
+          Group:       ArgList
+  E Operand:            other     VAR               
+  E Operand:            match     LIT               
+    Operand:          pattern     VAR               
+
+S   Operand: O            set     LIT               
+        Operand: O          clear     LIT               
+  E Operand:              set     LIT               
+S E Option:  O          x   extend                                   H
+  S   Option:  O          y    yield                                   H
+        Option:  O          z    sleep                                   H
+  E Option:  O          e     exit                                   H
+  E Group:   O   ArgList
+S E Operand: O          upper     LIT               
+  S   Operand: O          lower     LIT               
+        Operand: O            any     LIT               
+    Operand:          pattern     VAR               
+
+    Operand:            other     VAR               
+
+Usage:
+  ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+            any] <pattern>] <other> 
+  ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+            match <pattern>) [set | clear] 
+  ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+            starting | ending | <other> <pattern> <file>... 
+
+pp:      pattern     VAR S patternOpera
+pp:        other     VAR S otherOperand
+pp:         file   R VAR S  fileOperand
+pp:          set     LIT S   setOperand
+pp:        upper     LIT S upperOperand
+pp:        lower     LIT S lowerOperand
+pp:          any     LIT S   anyOperand
+pp:        match     LIT S matchOperand
+pp:       ending     LIT S endingOperan
+pp:        clear     LIT S clearOperand
+pp:     starting     LIT S startingOper
+pp:        x   extend      xOption S                    H
+pp:        y    yield      yOption S                    H
+pp:        z    sleep      zOption S                    H
+pp:        e     exit      eOption S                    H
+pp:        a    after  afterOption S        lines   S   H
+pp:        b   before beforeOption S        lines   S   H
+pp:        c               cOption S                    H
+pp:        d               dOption S                    H
+pp:        h     help   helpOption S                    H
+pp:        v  version versionOptio S                    H
+pp:    about           aboutOption S                    H
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+Usage:
+  ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+            any] <pattern>] <other> 
+  ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+            match <pattern>) [set | clear] 
+  ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+            starting | ending | <other> <pattern> <file>... 
+  ArgSample -h|--help | -v|--version | --about 
+
+Options:
+  -a, --after   <lines> number of lines after a match
+  -b, --before  <lines> number of lines before a match
+  -c                    confirm actions
+  -d                    delete matching line and by the way, if this runs too
+                        long, and continues for a long time, where will all this
+                        text go ?
+  -e, --exit            exit on error
+  -x, --extend          help description for x
+  -y, --yield           yeild to substitutions
+  -z, --sleep           dormant state when completed
+  -h, --help            show this help text
+  -v, --version         show version information
+      --about           show information about this program
+
+Demonstrates the "ArgFace" command line interface.
+All output is based on the command line arguments.
+No files were harmed during the running of this program.
+
+nArg = 0
+
+--about
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: --about
+----------------
+ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+          match <pattern>) [set | clear] 
+arg: --about
+----------------
+ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+          starting | ending | <other> <pattern> <file>... 
+arg: --about
+----------------
+ArgSample -h|--help | -v|--version | --about 
+arg: --about
+ArgSample version 1.0.0
+  Developed to demonstrate the "ArgFace" Command Line Interface.
+  2014-04-23
+  Leo Hinterlang -- leohinterlang@gmail.com
+  Fidelis Software Technologies, Butler, PA
+
+nArg = 1
+1     aboutOption: true
+
+--version
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: --version
+----------------
+ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+          match <pattern>) [set | clear] 
+arg: --version
+----------------
+ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+          starting | ending | <other> <pattern> <file>... 
+arg: --version
+----------------
+ArgSample -h|--help | -v|--version | --about 
+arg: --version
+ArgSample version 1.0.0
+nArg = 1
+1   versionOption: true
+
+--help
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: --help
+----------------
+ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+          match <pattern>) [set | clear] 
+arg: --help
+----------------
+ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+          starting | ending | <other> <pattern> <file>... 
+arg: --help
+----------------
+ArgSample -h|--help | -v|--version | --about 
+arg: --help
+Usage:
+  ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+            any] <pattern>] <other> 
+  ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+            match <pattern>) [set | clear] 
+  ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+            starting | ending | <other> <pattern> <file>... 
+  ArgSample -h|--help | -v|--version | --about 
+
+Options:
+  -a, --after   <lines> number of lines after a match
+  -b, --before  <lines> number of lines before a match
+  -c                    confirm actions
+  -d                    delete matching line and by the way, if this runs too
+                        long, and continues for a long time, where will all this
+                        text go ?
+  -e, --exit            exit on error
+  -x, --extend          help description for x
+  -y, --yield           yeild to substitutions
+  -z, --sleep           dormant state when completed
+  -h, --help            show this help text
+  -v, --version         show version information
+      --about           show information about this program
+
+Demonstrates the "ArgFace" command line interface.
+All output is based on the command line arguments.
+No files were harmed during the running of this program.
+
+nArg = 1
+1      helpOption: true
+
+-a 5 -b 5 ending public file.java file2 file3
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: -a
+----------------
+ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+          match <pattern>) [set | clear] 
+arg: -a
+----------------
+ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+          starting | ending | <other> <pattern> <file>... 
+arg: -a
+opt: 5
+arg: -b
+opt: 5
+arg: ending
+arg: public
+arg: file.java
+arg: file2
+arg: file3
+        pattern : 3-999 (5) match <pattern> <file>...      bLVV
+Try pattern: match <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : match to ending
+   rebuild Base : S E Operand:            match     LIT S matchOperand
+   rebuild Fail : S E Operand:            match     LIT S matchOperand
+      fail Base : S E Operand:            match     LIT S matchOperand
+      fail Node : S E Operand:            match     LIT S matchOperand
+     fail south : S   Operand:         starting     LIT S startingOper
+  not fail base :   E Operand:          pattern     VAR S patternOpera
+  not fail base :     Operand:   R         file   R VAR S  fileOperand
+        pattern : 3-999 (5) starting <pattern> <file>...   bLVV
+Try pattern: starting <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S   Operand:         starting     LIT S startingOper
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : starting to ending
+   rebuild Base : S E Operand:            match     LIT S matchOperand
+   rebuild Fail : S   Operand:         starting     LIT S startingOper
+      fail Base : S E Operand:            match     LIT S matchOperand
+      fail Node : S   Operand:         starting     LIT S startingOper
+     fail south : S   Operand:           ending     LIT S endingOperan
+  not fail base :   E Operand:          pattern     VAR S patternOpera
+  not fail base :     Operand:   R         file   R VAR S  fileOperand
+        pattern : 3-999 (5) ending <pattern> <file>...     bLVV
+Try pattern: ending <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S   Operand:           ending     LIT S endingOperan
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : ending to ending
+       Variable : public
+       Variable : file.java
+Pattern match found
+PATTERN: bLVV
+arg:          ending ->       ending     LIT S endingOperan
+arg:          public ->      pattern     VAR S patternOpera
+rep:       file.java ->         file   R VAR S  fileOperand
+rep:           file2 ->         file   R VAR S  fileOperand
+rep:           file3 ->         file   R VAR S  fileOperand
+nArg = 9
+sample operand: ending
+sample operand: public
+sample operand: file.java
+sample operand: file2
+sample operand: file3
+1     afterOption: true
+0      afterLines: 5
+            after: 5
+1    beforeOption: true
+0     beforeLines: 5
+           before: 5
+1   endingOperand: true
+1  patternOperand: public
+3     fileOperand: file.java
+3     fileOperand: file2
+3     fileOperand: file3
+
+-cd total patternValue file.java another.file yetAnother.file more more2 more3 more4 more5 more6
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: -cd
+----------------
+ArgSample (match [upper | lower | any] <other>) | (ending <file>) | (<other>
+          match <pattern>) [set | clear] 
+arg: -cd
+----------------
+ArgSample [-a|--after <lines>] [-b|--before <lines>] [-c] [-d] [-e] match |
+          starting | ending | <other> <pattern> <file>... 
+arg: -cd
+arg: total
+arg: patternValue
+arg: file.java
+arg: another.file
+arg: yetAnother.file
+arg: more
+arg: more2
+arg: more3
+arg: more4
+arg: more5
+arg: more6
+        pattern : 3-999 (11) match <pattern> <file>...      bLVV
+Try pattern: match <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : match to total
+   rebuild Base : S E Operand:            match     LIT S matchOperand
+   rebuild Fail : S E Operand:            match     LIT S matchOperand
+      fail Base : S E Operand:            match     LIT S matchOperand
+      fail Node : S E Operand:            match     LIT S matchOperand
+     fail south : S   Operand:         starting     LIT S startingOper
+  not fail base :   E Operand:          pattern     VAR S patternOpera
+  not fail base :     Operand:   R         file   R VAR S  fileOperand
+        pattern : 3-999 (11) starting <pattern> <file>...   bLVV
+Try pattern: starting <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S   Operand:         starting     LIT S startingOper
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : starting to total
+   rebuild Base : S E Operand:            match     LIT S matchOperand
+   rebuild Fail : S   Operand:         starting     LIT S startingOper
+      fail Base : S E Operand:            match     LIT S matchOperand
+      fail Node : S   Operand:         starting     LIT S startingOper
+     fail south : S   Operand:           ending     LIT S endingOperan
+  not fail base :   E Operand:          pattern     VAR S patternOpera
+  not fail base :     Operand:   R         file   R VAR S  fileOperand
+        pattern : 3-999 (11) ending <pattern> <file>...     bLVV
+Try pattern: ending <pattern> <file>...
+          match : bLVV
+    patternList : S E Operand:            match     LIT S matchOperand
+    patternList : S   Operand:           ending     LIT S endingOperan
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+        compare : ending to total
+   rebuild Base : S E Operand:            match     LIT S matchOperand
+   rebuild Fail : S   Operand:           ending     LIT S endingOperan
+      fail Base : S E Operand:            match     LIT S matchOperand
+      fail Node : S   Operand:           ending     LIT S endingOperan
+     fail south :     Operand:            other     VAR S otherOperand
+  not fail base :   E Operand:          pattern     VAR S patternOpera
+  not fail base :     Operand:   R         file   R VAR S  fileOperand
+        pattern : 3-999 (11) <other> <pattern> <file>...    VVV
+Try pattern: <other> <pattern> <file>...
+          match : VVV
+    patternList :     Operand:            other     VAR S otherOperand
+    patternList :   E Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:   R         file   R VAR S  fileOperand
+       Variable : total
+       Variable : patternValue
+       Variable : file.java
+Pattern match found
+PATTERN: VVV
+arg:           total ->        other     VAR S otherOperand
+arg:    patternValue ->      pattern     VAR S patternOpera
+rep:       file.java ->         file   R VAR S  fileOperand
+rep:    another.file ->         file   R VAR S  fileOperand
+rep: yetAnother.file ->         file   R VAR S  fileOperand
+rep:            more ->         file   R VAR S  fileOperand
+rep:           more2 ->         file   R VAR S  fileOperand
+rep:           more3 ->         file   R VAR S  fileOperand
+rep:           more4 ->         file   R VAR S  fileOperand
+rep:           more5 ->         file   R VAR S  fileOperand
+rep:           more6 ->         file   R VAR S  fileOperand
+nArg = 12
+sample operand: total
+sample operand: patternValue
+sample operand: file.java
+sample operand: another.file
+sample operand: yetAnother.file
+sample operand: more
+sample operand: more2
+sample operand: more3
+sample operand: more4
+sample operand: more5
+sample operand: more6
+1         cOption: true
+1         dOption: true
+1    otherOperand: total
+1  patternOperand: patternValue
+9     fileOperand: file.java
+9     fileOperand: another.file
+9     fileOperand: yetAnother.file
+9     fileOperand: more
+9     fileOperand: more2
+9     fileOperand: more3
+9     fileOperand: more4
+9     fileOperand: more5
+9     fileOperand: more6
+
+begins xxx yyy
+=========================
+ArgSample set [-x|--extend | -y|--yield | -z|--sleep] [-e] [[upper | lower |
+          any] <pattern>] <other> 
+arg: begins
+arg: xxx
+arg: yyy
+        pattern : 4-4 (3) set [upper] <pattern> <other>  bLgbLVV
+          match : bLgbLVV
+    patternList :   E Operand:              set     LIT S   setOperand
+    patternList :   E Operand:              set     LIT S   setOperand
+    patternList : ArgList: upper pattern 
+    patternList : S E Operand: O          upper     LIT S upperOperand
+    patternList : S E Operand: O          upper     LIT S upperOperand
+    patternList :     Operand:          pattern     VAR S patternOpera
+    patternList :     Operand:            other     VAR S otherOperand
+        compare : set to begins
+   rebuild Base :   E Operand:              set     LIT S   setOperand
+   rebuild Fail :   E Operand:              set     LIT S   setOperand
+      fail Base :   E Operand:              set     LIT S   setOperand
+      fail Node :   E Operand:              set     LIT S   setOperand
+  south is NULL :   E Operand:              set     LIT S   setOperand

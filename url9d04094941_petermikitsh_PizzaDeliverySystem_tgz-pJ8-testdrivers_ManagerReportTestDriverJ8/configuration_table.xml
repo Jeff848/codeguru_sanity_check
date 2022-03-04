@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.1" class="java.beans.XMLDecoder">
+ <int>0</int>
+ <object class="java.util.HashMap">
+  <void method="put">
+   <int>-882608411</int>
+   <object class="model.Configuration">
+    <void property="name">
+     <string>numDrivers</string>
+    </void>
+    <void property="value">
+     <string>1</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>25067133</int>
+   <object class="model.Configuration">
+    <void property="name">
+     <string>timeScale</string>
+    </void>
+    <void property="value">
+     <string>TS1to60</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>-1903491651</int>
+   <object class="model.Configuration">
+    <void property="name">
+     <string>numOvens</string>
+    </void>
+    <void property="value">
+     <string>1</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>114603</int>
+   <object class="model.Configuration">
+    <void property="name">
+     <string>tax</string>
+    </void>
+    <void property="value">
+     <string>8.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <int>-1914772923</int>
+   <object class="model.Configuration">
+    <void property="name">
+     <string>numCooks</string>
+    </void>
+    <void property="value">
+     <string>1</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
